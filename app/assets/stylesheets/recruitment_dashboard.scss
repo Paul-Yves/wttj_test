@@ -8,8 +8,11 @@
 
 .dashboard .dash-column{
   flex: 1 1 auto;
-  max-width: 15em;
+  max-width: 20em;
   margin-left: 2em;
+  padding: 1em;
+  border: 1px black;
+  box-shadow: 2px 2px 1px 1px black;
 }
 
 .candidate {
@@ -18,4 +21,5 @@
   background-color: #999999;
   box-shadow: 6px 6px 2px 1px black;
   margin-bottom: 1em;
+  cursor: move;
 }

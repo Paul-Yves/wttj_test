@@ -1,31 +1,24 @@
 import React, { Component } from "react";
-import Candidate from './candidate'
+import { DragDropContextProvider } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+
+import DashboardColumn from './dashboard_column';
 
 class Dashboard extends Component {
     constructor(props){
         super(props)
     }
 
-    list_recruits(step){
-        return <div className='candidates-list'>
-            {this.props.recruits.filter(recruit => recruit.step === step).map(
-                recruit => <Candidate {...recruit.candidate}></Candidate>
-            )}
-        </div>
-    }
-
     render(){
+        const to_meet = this.props.recruits.filter(recruit => recruit.step === 0);
+        const to_interview = this.props.recruits.filter(recruit => recruit.step === 1);
         return (
-            <div className='dashboard'>
-                <div className='dash-column'>
-                    <h1>A rencontrer</h1>
-                    {this.list_recruits(0)}
+            <DragDropContextProvider backend={HTML5Backend}>
+                <div className='dashboard'>
+                    <DashboardColumn recruits={to_meet} step={0} listType='to_meet'/>
+                    <DashboardColumn recruits={to_interview} step={1} listType='to_interview'/>
                 </div>
-                <div className='dash-column'>
-                    <h1>Entretien</h1>
-                    {this.list_recruits(1)}
-                </div>
-            </div>
+            </DragDropContextProvider>
         )
     }
 }
