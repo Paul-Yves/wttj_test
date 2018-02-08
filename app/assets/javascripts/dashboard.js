@@ -19983,6 +19983,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactDnd = __webpack_require__(97);
 
+var _axios = __webpack_require__(34);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19997,15 +20001,22 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var cardSource = {
     beginDrag: function beginDrag(props) {
         return {
-            id: props.recruit_id
+            id: props.recruit_id,
+            oldStep: props.step
         };
     },
     endDrag: function endDrag(props, monitor) {
         var item = monitor.getItem();
         var dropResult = monitor.getDropResult();
-        if (dropResult) {
-            //put here api call to change step
-            console.log('drop', item, dropResult);
+        if (dropResult && item.oldStep !== dropResult.step) {
+            _axios2.default.post('recruitment/' + item.id + '/edit', {
+                step: dropResult.step,
+                authenticity_token: window._token
+            }).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
         }
     }
 };
@@ -29602,7 +29613,8 @@ var DashboardColumn = function (_Component) {
                 'div',
                 { className: 'candidates-list' },
                 recruits.map(function (recruit) {
-                    return _react2.default.createElement(_candidate2.default, _extends({}, recruit.candidate, { recruit_id: recruit.id, key: recruit.id }));
+                    return _react2.default.createElement(_candidate2.default, _extends({}, recruit.candidate, { recruit_id: recruit.id,
+                        step: recruit.step, key: recruit.id }));
                 })
             );
         }

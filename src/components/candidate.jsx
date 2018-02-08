@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { DragSource } from 'react-dnd';
+import axios from 'axios';
 
 /**
  * Implements the drag source contract.
@@ -7,15 +8,24 @@ import { DragSource } from 'react-dnd';
 const cardSource = {
     beginDrag(props) {
         return {
-            id: props.recruit_id
+            id: props.recruit_id,
+            oldStep: props.step
         };
     },
     endDrag(props, monitor) {
         const item = monitor.getItem();
         const dropResult = monitor.getDropResult();
-        if (dropResult) {
-            //put here api call to change step
-            console.log('drop', item, dropResult);
+        if (dropResult && item.oldStep !== dropResult.step) {
+            axios.post('recruitment/'+item.id+'/edit', {
+                step: dropResult.step,
+                authenticity_token: window._token
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         }
     },
 };

@@ -20,7 +20,8 @@ class DashboardColumn extends Component{
     list_recruits(recruits){
         return <div className='candidates-list'>
             {recruits.map(
-                recruit => <Candidate { ...recruit.candidate } recruit_id={recruit.id} key={recruit.id}/>
+                recruit => <Candidate { ...recruit.candidate } recruit_id={recruit.id}
+                                      step={recruit.step} key={recruit.id}/>
             )}
         </div>
     }

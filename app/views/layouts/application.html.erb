@@ -3,7 +3,7 @@
   <head>
     <title>Jungle</title>
     <%= csrf_meta_tags %>
-
+    <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
