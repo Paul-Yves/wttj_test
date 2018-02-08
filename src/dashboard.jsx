@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import axios from 'axios';
+import Dashboard from './components/dashboard'
 
 class App extends Component{
 
@@ -8,7 +9,7 @@ class App extends Component{
         super(props)
         this.state = {
             name: 'No company',
-            candidates: []
+            recruits: []
         }
     }
 
@@ -18,7 +19,7 @@ class App extends Component{
         axios.get('company/'+company_id+'/show')
             .then(function (response) {
                 const data = response.data;
-                self.setState({name: data.name, candidates: data.recruits});
+                self.setState({name: data.name, recruits: data.recruits});
                 console.log(data);
             })
             .catch(function (error) {
@@ -30,7 +31,8 @@ class App extends Component{
         return (
             <div>
                 <h1>{this.state.name} - Account manager</h1>
-                <div>This is my dashboard</div>
+
+                <Dashboard recruits={this.state.recruits}></Dashboard>
             </div>
         )
     }
