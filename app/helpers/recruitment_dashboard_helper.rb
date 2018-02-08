@@ -1,0 +1,2 @@
+module RecruitmentDashboardHelper
+end
