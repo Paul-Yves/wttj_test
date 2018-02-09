@@ -21,7 +21,7 @@ const cardSource = {
                 authenticity_token: window._token
             })
             .then(function (response) {
-                console.log(response);
+                // todo maybe do the change here?
             })
             .catch(function (error) {
                 console.log(error);

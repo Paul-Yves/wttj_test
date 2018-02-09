@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# setup
 
-Things you may want to cover:
+run bundle to dl deps
 
-* Ruby version
+db has seed, so db:create and db:seed are required
 
-* System dependencies
+js is already compiled but if needed, *npm install* then *npm run build*
 
-* Configuration
+# sidenote
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+this is just a test, there are hardcoded stubs and lot of things to discuss about improvements
