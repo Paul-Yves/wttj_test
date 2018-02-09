@@ -55,7 +55,9 @@ class App extends Component{
     render(){
         return (
             <div>
-                <h1>{this.state.name} - Account manager</h1>
+                <div className='menu-bar'>
+                    <h1>{this.state.name} - Account manager</h1>
+                </div>
                 <Dashboard recruits={this.state.recruits}></Dashboard>
             </div>
         )

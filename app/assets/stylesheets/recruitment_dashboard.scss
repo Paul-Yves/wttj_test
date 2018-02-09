@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body{
+  margin: 0;
+}
+.menu-bar{
+  background-color: #00C29A;
+}
 .dashboard{
   display: flex;
 }
@@ -10,9 +16,12 @@
   flex: 1 1 auto;
   max-width: 20em;
   margin-left: 2em;
-  padding: 1em;
   border: 1px black;
   box-shadow: 2px 2px 1px 1px black;
+}
+
+.candidates-list{
+  padding: 1em;
 }
 
 .candidate {
@@ -22,4 +31,17 @@
   box-shadow: 6px 6px 2px 1px black;
   margin-bottom: 1em;
   cursor: move;
+}
+
+.step-title{
+  margin: 0;
+  background-color: #00C29A;
+  padding: 0.3em;
+}
+
+span.badge{
+  background-color: lightgray;
+  border-radius: 50%;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
 }

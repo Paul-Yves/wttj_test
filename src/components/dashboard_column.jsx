@@ -26,6 +26,13 @@ class DashboardColumn extends Component{
         </div>
     }
 
+    title(){
+        if(this.props.step === 0){
+            return 'A rencontrer'
+        }
+        return 'Entretien';
+    }
+
     render(){
         const { canDrop, isOver, connectDropTarget } = this.props
         const isActive = canDrop && isOver
@@ -38,7 +45,7 @@ class DashboardColumn extends Component{
         }
 
         return connectDropTarget(<div className='dash-column' style={{ backgroundColor }}>
-            <h1>A rencontrer ({this.props.recruits.length})</h1>
+            <h1 className='step-title'>{this.title()} <span className='badge'>{this.props.recruits.length}</span></h1>
             {this.list_recruits(this.props.recruits)}
         </div>)
     }

@@ -4247,10 +4247,14 @@ var App = function (_Component) {
                 "div",
                 null,
                 _react2.default.createElement(
-                    "h1",
-                    null,
-                    this.state.name,
-                    " - Account manager"
+                    "div",
+                    { className: "menu-bar" },
+                    _react2.default.createElement(
+                        "h1",
+                        null,
+                        this.state.name,
+                        " - Account manager"
+                    )
                 ),
                 _react2.default.createElement(_dashboard2.default, { recruits: this.state.recruits })
             );
@@ -29555,6 +29559,14 @@ var DashboardColumn = function (_Component) {
             );
         }
     }, {
+        key: 'title',
+        value: function title() {
+            if (this.props.step === 0) {
+                return 'A rencontrer';
+            }
+            return 'Entretien';
+        }
+    }, {
         key: 'render',
         value: function render() {
             var _props = this.props,
@@ -29576,10 +29588,14 @@ var DashboardColumn = function (_Component) {
                 { className: 'dash-column', style: { backgroundColor: backgroundColor } },
                 _react2.default.createElement(
                     'h1',
-                    null,
-                    'A rencontrer (',
-                    this.props.recruits.length,
-                    ')'
+                    { className: 'step-title' },
+                    this.title(),
+                    ' ',
+                    _react2.default.createElement(
+                        'span',
+                        { className: 'badge' },
+                        this.props.recruits.length
+                    )
                 ),
                 this.list_recruits(this.props.recruits)
             ));
